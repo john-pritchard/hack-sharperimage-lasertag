@@ -120,15 +120,22 @@ end
 disp(msgs)
 
 % For convenience, let's overlay start/stop calculations on the raw signal
- figure; plot(t, ir_raw);
- hold on;
- for i = 1:length(on_idx)
-     start_idx = on_idx(i, 1);
-     stop_idx = on_idx(i, 2);
-     plot(t(start_idx), ir_raw(start_idx), 'go', 'MarkerFaceColor', 'g');
-     plot(t(stop_idx), ir_raw(stop_idx), 'ro', 'MarkerFaceColor', 'r');
- end
- hold off;
+figure; plot(t, ir_raw);
+hold on;
+for i = 1:length(on_idx)
+   start_idx = on_idx(i, 1);
+   stop_idx = on_idx(i, 2);
+   plot(t(start_idx), ir_raw(start_idx), 'go', 'MarkerFaceColor', 'g');
+   plot(t(stop_idx), ir_raw(stop_idx), 'ro', 'MarkerFaceColor', 'r');
+end
+hold off;
+title('IR Raw Signal');
+xlabel('Time (s)');
+ylabel('Voltage (V)');
 
- % Again for convenience, let's plot the filtered signal
- figure; plot(t, ir_filtered);
+% Again for convenience, let's plot the filtered signal
+figure; plot(t, ir_filtered);
+ylim([-0.5, 1.5]);
+title('IR Processed Signal');
+xlabel('Time (s)');
+ylabel('Value (high/low)')
